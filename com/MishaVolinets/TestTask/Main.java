@@ -21,12 +21,15 @@ public class Main {
         Teacher.teachers.add(new Teacher("Nataliya","Shingera","Yaroslavivna",32, "Introduction to Specialty"));
 
         Teacher firstTeacher = Teacher.teachers.get(0);
-
-        firstTeacher.addStudent(new Student("Misha","Volinets","Yaroslavovich",18,2));
-        firstTeacher.addStudent(new Student("Dmitro","Rakochiy","Ivanovich",18,2));
-        firstTeacher.addStudent(new Student("Roman","Lutcishin","Bogdanovich",19,2));
-        firstTeacher.addStudent(new Student("Steave","Jobs","Vasilovich",24,2));
-        firstTeacher.addStudent(new Student("Vitaly","Krushelnitsky","Yuriyovich",22,5));
+        try {
+            firstTeacher.addStudent(new Student("Misha", "Volinets", "Yaroslavovich", 18, 2));
+            firstTeacher.addStudent(new Student("Dmitro", "Rakochiy", "Ivanovich", 18, 2));
+            firstTeacher.addStudent(new Student("Roman", "Lutcishin", "Bogdanovich", 19, 2));
+            firstTeacher.addStudent(new Student("Steave", "Jobs", "Vasilovich", 24, 2));
+            firstTeacher.addStudent(new Student("Vitaly", "Krushelnitsky", "Yuriyovich", 22, 5));
+        }catch (com.MishaVolinets.TestTask.Exceptions.CourseValueException ex){
+            ex.printStackTrace();
+        }
     }
 
 }

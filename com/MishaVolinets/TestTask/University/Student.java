@@ -7,15 +7,10 @@ public class Student extends UniversityMember {
 
     private int course;// Курс на якому навчається студент
 
-    public Student(String firstName,String lastName,String fatherName,int age, int _course){
+    public Student(String firstName,String lastName,String fatherName,int age, int _course) throws  CourseValueException{
         super(firstName,lastName,fatherName,age);
         setStatus("Student");
-        try {
-            setCourse(_course);
-        }catch (CourseValueException ex){
-            System.out.println("Sorry, but course must be less 8\n Try again");
-            return;
-        }
+        setCourse(_course);
     }
 
     public Student(){//Конструктор за умовчуванням
@@ -33,7 +28,7 @@ public class Student extends UniversityMember {
     }
 
     public void setCourse(int course) throws CourseValueException{
-        if(course<7)
+        if(course<8)//Провіряє чи курс менший 8, якщо менший, то викидає помилку
             this.course = course;
         else
             throw new CourseValueException();
