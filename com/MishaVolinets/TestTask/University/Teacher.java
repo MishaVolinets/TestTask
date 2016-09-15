@@ -12,7 +12,7 @@ public class Teacher extends UniversityMember {
 
     public static ArrayList<Teacher> teachers = new ArrayList<>();
 
-    public Teacher(String firstName,String lastName,String fatherName, int age, String _subject){
+    public Teacher(String firstName,String lastName,String fatherName, int age, String _subject) throws NameInputException{
         super(firstName,lastName,fatherName,age);
         setStatus("Teacher");
         subject = _subject;
@@ -20,6 +20,7 @@ public class Teacher extends UniversityMember {
 
     public void addStudent(Student student){
         students.add(student);
+        Student.allStudents.add(student);
     }
 
     public boolean removeStudent(String firstName, String lastName, String fatherName){
@@ -74,13 +75,13 @@ public class Teacher extends UniversityMember {
     public void printSortedStudents(){
         ArrayList<Student> students = sortStudent();
         for(int i = 0;i < students.size();i++)
-            System.out.println((i+1) + ". " + students.get(i));
+            System.out.println(" " + (i+1) + ". " + students.get(i));
     }
     public static void printAll(){
         for(int i = 0;i<teachers.size();i++){
-            System.out.println(teachers.get(i));
+            System.out.println((i+1) + ". " + teachers.get(i));
             teachers.get(i).printSortedStudents();
+            System.out.println();
         }
-        System.out.println();
     }
 }

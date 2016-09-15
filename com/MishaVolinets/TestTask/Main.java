@@ -1,5 +1,6 @@
 package com.MishaVolinets.TestTask;
 
+import com.MishaVolinets.TestTask.Exceptions.NameInputException;
 import com.MishaVolinets.TestTask.University.*;
 
 import java.util.ArrayList;
@@ -18,7 +19,11 @@ public class Main {
          * В самій програмі їх можа добавляти і видаляти,
          * але зміни збережені не будуть.
          */
-        Teacher.teachers.add(new Teacher("Nataliya","Shingera","Yaroslavivna",32, "Introduction to Specialty"));
+        try {
+            Teacher.teachers.add(new Teacher("Nataliya","Shingera","Yaroslavivna",32, "Introduction to Specialty"));
+        } catch (NameInputException e) {
+            e.printStackTrace();
+        }
 
         Teacher firstTeacher = Teacher.teachers.get(0);
         try {
@@ -29,6 +34,8 @@ public class Main {
             firstTeacher.addStudent(new Student("Vitaly", "Krushelnitsky", "Yuriyovich", 22, 5));
         }catch (com.MishaVolinets.TestTask.Exceptions.CourseValueException ex){
             ex.printStackTrace();
+        } catch (NameInputException e) {
+            e.printStackTrace();
         }
     }
 

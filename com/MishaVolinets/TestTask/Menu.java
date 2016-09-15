@@ -1,6 +1,7 @@
 package com.MishaVolinets.TestTask;
 
 import com.MishaVolinets.TestTask.Exceptions.CourseValueException;
+import com.MishaVolinets.TestTask.Exceptions.NameInputException;
 import com.MishaVolinets.TestTask.University.Student;
 import com.MishaVolinets.TestTask.University.Teacher;
 import java.util.Scanner;
@@ -115,6 +116,8 @@ public class Menu {
         } catch (CourseValueException e) {
             System.out.println("Course must be less 8\n Try Again: ");
             addStudent(teacherID);
+        }catch (NameInputException e){
+            System.out.println("Name can't include numbers");
         }
         System.out.println("Student was added");
     }
@@ -160,7 +163,13 @@ public class Menu {
             return;
         }
 
-        Teacher.teachers.add(new Teacher(firstName,lastName,fatherName,age,subject));
+        try {
+            Teacher.teachers.add(new Teacher(firstName,lastName,fatherName,age,subject));
+        } catch (NameInputException e) {
+            System.out.println("Name can't include numbers\nTry again");
+            createTeacher();
+            return;
+        }
         System.out.println("Teacher was added");
     }
     public void printTaS(){
