@@ -29,12 +29,15 @@ public class Menu {
 
         if(choice == 1)
             choiceTeacherMenu();
-        if(choice == 2)
+        else if(choice == 2)
             createTeacher();
-        if(choice == 3)
+        else if(choice == 3)
             printTaS();
-        if(choice == 9)
+        else if(choice == 9)
             status = false;
+        else{
+            System.out.println("Choice is uncurrect, try again");
+        }
     }
 
     public void choiceTeacherMenu(){
@@ -46,15 +49,15 @@ public class Menu {
         if(sc.hasNextInt())
             choice = sc.nextInt();
 
-        if(choice > 0&&choice<Teacher.teachers.size())
+        if(choice > 0&&choice<=Teacher.teachers.size())
             teacherMenu(choice);
-        else if(choice != 100){
+        else if(choice == 100){
+            return;
+        }
+        else {
             System.out.println("Teacher at this number not exist");
             choiceTeacherMenu();
         }
-        if(choice == 100)
-            return;
-
     }
     public void teacherMenu(int teacherID){
         Teacher tch = Teacher.teachers.get(teacherID-1);
