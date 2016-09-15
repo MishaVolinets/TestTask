@@ -19,6 +19,10 @@ public class Student extends UniversityMember {
         course = -1;
     }
 
+    public Student(Student st) throws CourseValueException{
+        this(st.getFirstName(),st.getLastName(),st.getFatherName(),st.getAge(),st.getCourse());
+    }
+
     public String toString(){
         return super.toString() + ", lear at " + course + " course";
     }

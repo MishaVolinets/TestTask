@@ -3,6 +3,7 @@ package com.MishaVolinets.TestTask.University;
 import com.MishaVolinets.TestTask.Exceptions.*;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Teacher extends UniversityMember {
 
@@ -21,13 +22,14 @@ public class Teacher extends UniversityMember {
         students.add(student);
     }
 
-    public void removeStudent(String firstName, String lastName, String fatherName){
+    public boolean removeStudent(String firstName, String lastName, String fatherName){
         try {
             Student rmStd = findStudent(firstName,lastName,fatherName);
             students.remove(rmStd);
+            return true;
         }catch (StudentNotFoundException ex){
             System.out.println("Sorry, but this student not exist");
-            return;
+            return false;
         }
     }
 
@@ -38,6 +40,17 @@ public class Teacher extends UniversityMember {
                     if(ob.getFatherName().equals(fatherName))
                         return ob;
         throw new StudentNotFoundException();
+    }
+
+    private ArrayList<Student> sortStudent(){
+        ArrayList<Student> arStud = students;
+
+        arStud.sort((Student firstStudent, Student secondStudent) ->{
+
+            return firstStudent.getLastName().compareTo(secondStudent.getLastName());
+        });
+
+        return arStud;
     }
 
 
@@ -57,5 +70,17 @@ public class Teacher extends UniversityMember {
     public void printStudents(){
         for(int i = 0;i < students.size();i++)
             System.out.println((i+1) + ". " + students.get(i));
+    }
+    public void printSortedStudents(){
+        ArrayList<Student> students = sortStudent();
+        for(int i = 0;i < students.size();i++)
+            System.out.println((i+1) + ". " + students.get(i));
+    }
+    public static void printAll(){
+        for(int i = 0;i<teachers.size();i++){
+            System.out.println(teachers.get(i));
+            teachers.get(i).printSortedStudents();
+        }
+        System.out.println();
     }
 }

@@ -20,7 +20,7 @@ public abstract class UniversityMember{ //Абстрактний клас для
     }
 
     public String toString(){
-        return status + ": " + firstName + " " + lastName + " " +fatherName + ", age - " + age;
+        return status + ": " + lastName + " " + firstName + " " +fatherName + ", age - " + age;
     }
 
     //Getters
@@ -59,6 +59,7 @@ public abstract class UniversityMember{ //Абстрактний клас для
     }
 
     public void setAge(int age){
+
         this.age = age;
     }
 
