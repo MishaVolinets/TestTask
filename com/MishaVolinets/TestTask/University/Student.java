@@ -26,6 +26,10 @@ public class Student extends UniversityMember {
         this(st.getFirstName(),st.getLastName(),st.getFatherName(),st.getAge(),st.getCourse());
     }
 
+    public static void sortAllStudent(){
+        allStudents = Teacher.sortStudent(allStudents);
+    }
+
     public String toString(){
         return super.toString() + ", lear at " + course + " course";
     }
@@ -40,4 +44,5 @@ public class Student extends UniversityMember {
         else
             throw new CourseValueException();
     }
+
 }

@@ -22,6 +22,7 @@ public class Menu {
         System.out.println("1.User menu;");
         System.out.println("2.Create new teacher;");
         System.out.println("3.Print all teacher and students");
+        System.out.println("4.Print only students");
         System.out.println("9.Exit");
 
         if(sc.hasNextInt())
@@ -34,6 +35,8 @@ public class Menu {
             createTeacher();
         else if(choice == 3)
             printTaS();
+        else if(choice == 4)
+            printStudents();
         else if(choice == 9)
             status = false;
         else{
@@ -174,5 +177,14 @@ public class Menu {
     }
     public void printTaS(){
         Teacher.printAll();
+    }
+    public void printStudents(){
+        Student.sortAllStudent();
+        int i = 1;
+        for(Student st:Student.allStudents){
+            System.out.println(i + " " + st);
+            i++;
+
+        }
     }
 }

@@ -2,6 +2,7 @@ package com.MishaVolinets.TestTask.University;
 
 import com.MishaVolinets.TestTask.Exceptions.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -43,8 +44,8 @@ public class Teacher extends UniversityMember {
         throw new StudentNotFoundException();
     }
 
-    private ArrayList<Student> sortStudent(){
-        ArrayList<Student> arStud = students;
+    public static ArrayList<Student> sortStudent(ArrayList<Student> _students){
+        ArrayList<Student> arStud = _students;
 
         arStud.sort((Student firstStudent, Student secondStudent) ->{
 
@@ -73,7 +74,7 @@ public class Teacher extends UniversityMember {
             System.out.println((i+1) + ". " + students.get(i));
     }
     public void printSortedStudents(){
-        ArrayList<Student> students = sortStudent();
+        ArrayList<Student> students = sortStudent(this.students);
         for(int i = 0;i < students.size();i++)
             System.out.println(" " + (i+1) + ". " + students.get(i));
     }
