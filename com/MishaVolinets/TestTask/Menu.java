@@ -18,7 +18,7 @@ public class Menu {
             mainMenu();
         }while (status);
     }
-    public void mainMenu(){
+    private void mainMenu(){
         System.out.println("1.User menu;");
         System.out.println("2.Create new teacher;");
         System.out.println("3.Print all teacher and students");
@@ -44,7 +44,7 @@ public class Menu {
         }
     }
 
-    public void choiceTeacherMenu(){
+    private void choiceTeacherMenu(){
         System.out.println("\t User Menu");
 
         System.out.println("Please choice teacher: ");
@@ -63,9 +63,9 @@ public class Menu {
             choiceTeacherMenu();
         }
     }
-    public void teacherMenu(int teacherID){
+    private void teacherMenu(int teacherID){
         Teacher tch = Teacher.teachers.get(teacherID-1);
-        System.out.println("Hello " + tch);
+        System.out.println("Hello " + tch.getFirstName() + " " + tch.getFatherName());
         System.out.println("Your students: ");
         tch.printSortedStudents();
         System.out.println("\n1.Add Student");
@@ -86,7 +86,7 @@ public class Menu {
     }
 
 
-    public void addStudent(int teacherID){
+    private void addStudent(int teacherID){
 
         Scanner sc = new Scanner(System.in);
         String firstName, lastName, fatherName;
@@ -124,7 +124,7 @@ public class Menu {
         }
         System.out.println("Student was added");
     }
-    public void deleteStudent(int teacherID){
+    private void deleteStudent(int teacherID){
         Scanner sc = new Scanner(System.in);
         String firstName, lastName, fatherName;
         System.out.println("Enter: ");
@@ -139,7 +139,7 @@ public class Menu {
             System.out.println("Student was deleted");
 
     }
-    public void createTeacher(){
+    private void createTeacher(){
         String firstName,lastName,fatherName,subject;
         int age;
         Scanner sc = new Scanner(System.in);
@@ -175,10 +175,10 @@ public class Menu {
         }
         System.out.println("Teacher was added");
     }
-    public void printTaS(){
+    private void printTaS(){
         Teacher.printAll();
     }
-    public void printStudents(){
+    private void printStudents(){
         Student.sortAllStudent();
         int i = 1;
         for(Student st:Student.allStudents){

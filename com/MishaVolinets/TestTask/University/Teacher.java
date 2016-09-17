@@ -28,6 +28,7 @@ public class Teacher extends UniversityMember {
         try {
             Student rmStd = findStudent(firstName,lastName,fatherName);
             students.remove(rmStd);
+            Student.allStudents.remove(rmStd);
             return true;
         }catch (StudentNotFoundException ex){
             System.out.println("Sorry, but this student not exist");
